@@ -177,14 +177,13 @@ def notify_public_message_or_action(prefix, message, highlighted):
             message = match.group(2)
             notify_public_action_message(prefix, message, highlighted)
     else:
-        if weechat.config_get_plugin("show_public_message") == "on":
-            if highlighted:
-                notify_highlighted_message(prefix, message)
-            else:
-                growl_notify(
-                    'Public',
-                    'Public Message',
-                    '{0}: {1}'.format(prefix, message))
+        if highlighted:
+            notify_highlighted_message(prefix, message)
+        elif weechat.config_get_plugin("show_public_message") == "on":
+            growl_notify(
+                'Public',
+                'Public Message',
+                '{0}: {1}'.format(prefix, message))
 
 def notify_private_message_or_action(prefix, message, highlighted):
     '''Notify on private message or action.'''
@@ -201,14 +200,13 @@ def notify_private_message_or_action(prefix, message, highlighted):
                 message = match.group(2)
                 notify_private_action_message(prefix, message, highlighted)
         else:
-            if weechat.config_get_plugin("show_private_message") == "on":
-                if highlighted:
-                    notify_highlighted_message(prefix, message)
-                else:
-                    growl_notify(
-                        'Private',
-                        'Private Message',
-                        '{0}: {1}'.format(prefix, message))
+            if highlighted:
+                notify_highlighted_message(prefix, message)
+            elif weechat.config_get_plugin("show_private_message") == "on":
+                growl_notify(
+                    'Private',
+                    'Private Message',
+                    '{0}: {1}'.format(prefix, message))
 
 def notify_public_action_message(prefix, message, highlighted):
     '''Notify on public action message.'''
