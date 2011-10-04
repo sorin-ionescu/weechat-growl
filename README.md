@@ -1,14 +1,14 @@
 # WeeChat Growl Script
 
-This is a [Growl](http://growl.info) script for [WeeChat](http://weechat.org/) Internet Relay Chat client.
+This is a [Growl](http://growl.info) script for [WeeChat](http://weechat.org) Internet Relay Chat client.
 
-For my [Irssi](http://irssi.org/) Growl plugin, see [Irssi Growl](https://github.com/sorin-ionescu/irssi-growl).
+For an [Irssi](http://irssi.org/) Growl script, see [Irssi Growl](https://github.com/sorin-ionescu/irssi-growl).
 
 ## Installation
 
-Make sure that the Growl Pythong bindings are installed.
+Make sure that the Growl Network Transport Protocol ([GNTP](https://github.com/kfdm/gntp)) Python bindings are installed.
 
-    sudo pip install py-Growl
+    pip install gntp
 
 Move *growl.py* to *~/.weechat/python/autoload/growl.py* and an *icon.png* to *~/.weechat/icon.png*.
 
