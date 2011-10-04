@@ -24,13 +24,14 @@
 
 SCRIPT_NAME = 'growl'
 SCRIPT_AUTHOR = 'Sorin Ionescu <sorin.ionescu@gmail.com>'
-SCRIPT_VERSION = '1.0.1'
+SCRIPT_VERSION = '1.0.2'
 SCRIPT_LICENSE = 'MIT'
 SCRIPT_DESC = 'Sends Growl notifications upon events.'
 
 
 # Changelog
 #
+# 2011-10-04: v1.0.2 Growl 1.3 requires GNTP.
 # 2011-09-25: v1.0.1 Always show highlighted messages if set on.
 # 2011-03-27: v1.0.0 Initial release.
 
