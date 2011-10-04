@@ -60,15 +60,17 @@ try:
     import re
     import os
     import weechat
-    import Growl
+    from gntp.notifier import GrowlNotifier
     IMPORT_OK = True
 except ImportError as error:
     IMPORT_OK = False
     if str(error) == 'No module named weechat':
         print('This script must be run under WeeChat.')
         print('Get WeeChat at http://www.weechat.org.')
-    if str(error) == 'No module named Growl':
-        weechat.prnt('', 'Growl: Python bindings are not installed.')
+    elif str(error) == 'No module named notifier':
+        weechat.prnt('', 'Growl GNTP Python bindings are not installed.')
+    else:
+        weechat.prnt('', "Growl could not be loaded, '%s'." % (error))
 
 
 # -----------------------------------------------------------------------------
@@ -425,7 +427,7 @@ def main():
     name = "WeeChat"
     hostname = weechat.config_get_plugin('hostname')
     password = weechat.config_get_plugin('password')
-    icon = Growl.Image.imageFromPath(
+    icon = 'file://{0}'.format(
         os.path.join(
             weechat.info_get("weechat_dir", ""),
             weechat.config_get_plugin('icon')))
@@ -445,7 +447,7 @@ def main():
         hostname = None
     if len(password) == 0:
         password = None
-    growl = Growl.GrowlNotifier(
+    growl = GrowlNotifier(
         applicationName=name,
         hostname=hostname,
         password=password,
