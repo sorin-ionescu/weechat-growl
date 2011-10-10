@@ -131,6 +131,7 @@ DISPATCH_TABLE = {
 
 STATE = {
     'growl': None,
+    'icon': None,
     'is_away': False
 }
 
@@ -410,13 +411,20 @@ def growl_notify(notification, title, description, priority=None):
     '''Returns whether Growl notifications should be sticky.'''
     growl = STATE['growl']
     is_away = STATE['is_away']
+    icon = STATE['icon']
     is_sticky = False
     if weechat.config_get_plugin('sticky') == 'on':
         is_sticky = True
     if weechat.config_get_plugin('sticky_away') == 'on' and is_away:
         is_sticky = True
     try:
-        growl.notify(notification, title, description, '', is_sticky, priority)
+        growl.notify(
+            noteType=notification,
+            title=title,
+            description=description,
+            icon=icon,
+            sticky=is_sticky,
+            priority=priority)
     except Exception as error:
         weechat.prnt('', 'growl: {0}'.format(str(error)))
 
@@ -465,6 +473,7 @@ def main():
     except Exception as error:
         weechat.prnt('', 'growl: {0}'.format(str(error)))
     STATE['growl'] = growl
+    STATE['icon'] = icon
     # Register hooks.
     weechat.hook_signal(
         'irc_server_connected',
