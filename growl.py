@@ -461,9 +461,9 @@ def main():
         'WeeChat'
     ]
     if len(hostname) == 0:
-        hostname = None
+        hostname = ''
     if len(password) == 0:
-        password = None
+        password = ''
     growl = GrowlNotifier(
         applicationName=name,
         hostname=hostname,
