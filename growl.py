@@ -445,10 +445,9 @@ def main():
     name = "WeeChat"
     hostname = weechat.config_get_plugin('hostname')
     password = weechat.config_get_plugin('password')
-    icon = 'file://{0}'.format(
-        os.path.join(
-            weechat.info_get("weechat_dir", ""),
-            weechat.config_get_plugin('icon')))
+    icon = open(os.path.join(
+        weechat.info_get("weechat_dir", ""),
+        weechat.config_get_plugin('icon')), "rb").read()
     notifications = [
         'Public',
         'Private',
